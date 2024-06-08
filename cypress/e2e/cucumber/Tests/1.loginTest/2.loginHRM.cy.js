@@ -21,3 +21,40 @@ Then('validate for valid user page', () => {
 
 //SCENARIO TC2
 
+When('I enter {word} and {word}', (un, pw) => {
+    cy.get('[name="username"]').type(un)
+    cy.get('[name="password"]').type(pw)
+})
+
+//SCENARIO TC3
+
+When('I enter to {word} and {word}', (un, pw) => {
+    cy.get('[name="username"]').type(un)
+    cy.get('[name="password"]').type(pw)
+})
+
+Then('validate to valid and invalid {word}', (cri) => {
+    if (cri == 'valid') {
+        cy.get('.oxd-text--h6').should('have.text', 'Dashboard')
+    }
+    else if (cri == 'invalid') {
+        cy.get('.oxd-alert-content-text').should('have.text', 'Invalid credentials')
+    }
+})
+
+//SCENARIO TC4
+
+When('I enter for {string} and {string}', (un, pw) => {
+    cy.get('[name="username"]').type(un)
+    cy.get('[name="password"]').type(pw)
+})
+
+
+Then('validate for value valid and invalid {string}', (cri) => {
+    if (cri == 'valid') {
+        cy.get('.oxd-topbar-header-breadcrumb-module').should('have.text', 'Dashboard')
+    }
+    else if (cri == 'invalid') {
+        cy.get('.oxd-alert-content-text').should('have.text', 'Invalid credentials')
+    }
+}) 
